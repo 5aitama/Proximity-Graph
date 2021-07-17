@@ -1,5 +1,5 @@
 import {FindCanvas, FindContext} from "./lib/utils.js";
-import asc_loader from "./_snowpack/pkg/@assemblyscript/loader.js";
+import asc_loader from "./snowpack/pkg/@assemblyscript/loader.js";
 import Node from "./lib/node.js";
 import Link from "./lib/link.js";
 const canvas = FindCanvas();
