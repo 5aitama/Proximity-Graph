@@ -17,6 +17,11 @@ const NODE_VEL_Y_OFFSET = <i32>sizeof<f32>() * 3;
 /** The node radius attribute offset *(in bytes)*. */
 const NODE_RAD_OFFSET = <i32>sizeof<f32>() * 4;
 
+/**
+ * The size *(in bytes)* of a single `Link`.
+ * 
+ * ⚠️ IMPORTANT ⚠️ : Must be the same size as `Link` class in Typescript.
+ */
 const LINK_SIZE             = <i32>sizeof<f32>() * 5;
 const LINK_FROM_X_OFFSET    = 0;
 const LINK_FROM_Y_OFFSET    = <i32>sizeof<f32>();

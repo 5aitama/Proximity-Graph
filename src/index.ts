@@ -30,6 +30,9 @@ let node_buff_ptr = 0;
  */
 let link_buff_ptr = 0;
 
+const max_dist = 90;
+const node_amount = 250;
+
 /**
  * Resize the canvas to fullscreen.
  * @note No dpi support for now...
@@ -50,8 +53,6 @@ async function Init() {
     // Load the assembly file...
     module = await asc_loader.instantiateStreaming(fetch("wasm/optimized.wasm"));
     module_exports = module.exports;
-
-    const node_amount = 350;
 
     // Create new Node array buffer...
     node_buff_ptr = module.exports.__pin(module_exports.CreateNodeArrayBuffer(node_amount));
@@ -84,7 +85,7 @@ function MainLoop(time: number = 0) {
     ctx.fill();
 
     module_exports.ApplyVelocity(node_buff_ptr, time_data.dt / 1000, 0, 0, canvas.width, canvas.height);
-    const link_count = module_exports.UpdateLinks(link_buff_ptr, node_buff_ptr, 80.0);
+    const link_count = module_exports.UpdateLinks(link_buff_ptr, node_buff_ptr, max_dist);
     
     const node_buff = module.exports.__getArrayBuffer(node_buff_ptr);
     const link_buff = module.exports.__getArrayBuffer(link_buff_ptr);
@@ -104,7 +105,7 @@ function MainLoop(time: number = 0) {
         ctx.beginPath();
         ctx.moveTo(link.from.x, link.from.y);
         ctx.lineTo(link.to.x, link.to.y);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - link.dst / 80})`;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - link.dst / max_dist})`;
         ctx.stroke();
     }
 

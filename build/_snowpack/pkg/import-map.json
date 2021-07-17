@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@assemblyscript/loader": "./@assemblyscript/loader.js"
+  }
+}

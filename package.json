@@ -18,6 +18,7 @@
     "asbuild:untouched": "asc assembly/index.ts --target debug",
     "asbuild:optimized": "asc assembly/index.ts --target release",
     "asbuild": "yarn asbuild:untouched && yarn asbuild:optimized",
+    "dev": "yarn snowpack dev",
     "test": "node tests"
   }
 }
