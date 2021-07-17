@@ -22,6 +22,7 @@
     "asbuild:optimized": "asc assembly/index.ts --target release",
     "asbuild": "yarn asbuild:untouched && yarn asbuild:optimized",
     "dev": "yarn snowpack dev",
+    "build": "asbuild && yarn snowpack build",
     "test": "node tests"
   }
 }
